@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本の旅 — Japan Family Journey 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1e140a;
+  --ink-mid: #3d2b1a;
+  --ink-light: #6b4c33;
+  --paper: #f7f1e8;
+  --paper-warm: #ede5d5;
+  --paper-dark: #e0d4c0;
+  --vermilion: #c0392b;
+  --vermilion-dark: #922b21;
+  --vermilion-light: #e8c5c0;
+  --gold: #b8860b;
+  --gold-light: #f5e6c0;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--ink);
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-bg-kanji {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cover-bg-kanji span {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(200px, 40vw, 500px);
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  user-select: none;
+  letter-spacing: -20px;
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(40px, 8vw, 100px);
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.cover-mon {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--vermilion);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.cover-mon span {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 22px;
+  color: var(--vermilion);
+}
+
+.cover-jp-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(36px, 8vw, 80px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.cover-en-title {
+  font-size: clamp(13px, 2vw, 16px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.cover-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--vermilion);
+  margin-bottom: 40px;
+}
+
+.cover-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cover-meta-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.cover-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  min-width: 80px;
+}
+
+.cover-meta-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.05em;
+}
+
+.cover-footer {
+  padding: clamp(24px, 4vw, 48px) clamp(40px, 8vw, 100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.cover-footer-cities {
+  display: flex;
+  gap: 32px;
+}
+
+.cover-footer-city {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cover-footer-city-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  color: rgba(255,255,255,0.5);
+}
+
+.cover-footer-city-en {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+
+.cover-footer-scroll {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── NAV ── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  border-bottom: 2px solid var(--vermilion);
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+}
+
+.nav-brand {
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.nav-brand span {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.1em;
+}
+
+.nav-items {
+  display: flex;
+  flex: 1;
+}
+
+.nav-item {
+  padding: 16px 24px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.nav-item:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.04); }
+.nav-item.active { color: #fff; background: rgba(192,57,43,0.2); border-bottom: 2px solid var(--vermilion); }
+
+/* ── SECTIONS ── */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── OVERVIEW ── */
+.overview-hero {
+  background: var(--ink-mid);
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: start;
+}
+
+.oh-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 16px;
+}
+
+.oh-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.oh-subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+.oh-travelers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.oh-traveler {
+  padding: 6px 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.08em;
+}
+
+.oh-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: right;
+}
+
+.oh-stat-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--vermilion);
+  line-height: 1;
+}
+
+.oh-stat-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-top: 4px;
+}
+
+/* Red band */
+.red-band {
+  background: var(--vermilion);
+  padding: 14px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.rb-item {
+  font-size: 12px;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.06em;
+  padding: 4px 24px 4px 0;
+  border-right: 1px solid rgba(255,255,255,0.25);
+  margin-right: 24px;
+}
+
+.rb-item:last-child { border-right: none; margin-right: 0; }
+
+/* City cards */
+.city-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--paper-dark);
+}
+
+.city-card {
+  padding: 40px 36px;
+  border-right: 1px solid var(--paper-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.city-card:last-child { border-right: none; }
+
+.city-card::before {
+  content: attr(data-jp);
+  position: absolute;
+  bottom: -20px;
+  right: -10px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 100px;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.cc-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 8px;
+}
+
+.cc-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  color: var(--ink);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.cc-en {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  margin-bottom: 16px;
+}
+
+.cc-dates {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.cc-hotel {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.cc-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-highlight {
+  font-size: 12px;
+  color: var(--ink-mid);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.cc-highlight::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  font-size: 6px;
+  color: var(--vermilion);
+  top: 4px;
+}
+
+.cc-highlight.special {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Flights & luggage */
+.logistics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--paper-dark);
+}
+
+.logistics-panel {
+  padding: 40px 36px;
+  border-right: 1px solid var(--paper-dark);
+}
+
+.logistics-panel:last-child { border-right: none; }
+
+.lp-header {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.flight-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.flight-row:last-child { border-bottom: none; }
+
+.flight-route {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.flight-detail {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+
+.flight-badge {
+  font-size: 10px;
+  padding: 3px 8px;
+  background: var(--vermilion-light);
+  color: var(--vermilion-dark);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* ── TIMELINE ── */
+.timeline-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.ts-intro {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.ts-intro-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 8px;
+}
+
+.ts-intro-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.day-entry {
+  display: grid;
+  grid-template-columns: 100px 40px 1fr;
+  gap: 0 24px;
+  margin-bottom: 0;
+}
+
+.day-entry:last-child .de-line { display: none; }
+
+.de-date {
+  text-align: right;
+  padding-top: 2px;
+  padding-bottom: 40px;
+}
+
+.de-date-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1;
+  display: block;
+}
+
+.de-date-month {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  display: block;
+  margin-top: 2px;
+}
+
+.de-date-dow {
+  font-size: 10px;
+  color: #bbb;
+  display: block;
+  margin-top: 2px;
+}
+
+.de-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.de-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--vermilion);
+  background: var(--paper);
+  flex-shrink: 0;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.de-dot.filled {
+  background: var(--vermilion);
+}
+
+.de-line {
+  flex: 1;
+  width: 1px;
+  background: var(--paper-dark);
+  margin-top: 4px;
+}
+
+.de-body {
+  padding-bottom: 40px;
+}
+
+.de-city-tag {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+}
+
+.tag-tokyo { background: var(--vermilion); }
+.tag-kyoto { background: #5a3e2b; }
+.tag-osaka { background: #2b3e5a; }
+.tag-travel { background: #888; }
+.tag-daytrip { background: var(--gold); }
+
+.de-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.de-desc {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.de-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--vermilion);
+  margin-right: 8px;
+  margin-top: 4px;
+}
+
+.de-highlight::before {
+  content: '★';
+  font-size: 10px;
+}
+
+.de-highlight.birthday::before {
+  content: '🎂';
+}
+
+/* ── TRAINS ── */
+.trains-section {
+  padding: 60px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.sh-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 8px;
+}
+
+.sh-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.train-card {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 24px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--paper-dark);
+}
+
+.tc-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--paper-dark);
+  line-height: 1;
+  text-align: center;
+}
+
+.tc-route {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tc-arrow { color: var(--vermilion); font-size: 14px; }
+
+.tc-detail {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.tc-tip {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.tc-warning {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--vermilion);
+  font-weight: 700;
+}
+
+.tc-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tc-date {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.tc-time {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--vermilion);
+  line-height: 1;
+}
+
+.tc-duration {
+  font-size: 11px;
+  color: var(--ink-light);
+  margin-top: 4px;
+}
+
+/* ── BOOKED EVENTS ── */
+.events-section {
+  padding: 60px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--paper-dark);
+  align-items: start;
+}
+
+.ec-date-block {
+  text-align: center;
+  background: var(--ink);
+  padding: 12px 8px;
+  color: #fff;
+}
+
+.ec-date-num {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+  display: block;
+}
+
+.ec-date-month {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  margin-top: 4px;
+}
+
+.ec-date-block.vermilion { background: var(--vermilion); }
+
+.ec-name {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ec-time {
+  font-size: 13px;
+  color: var(--vermilion);
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.ec-detail {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.ec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ec-tag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--paper-dark);
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .city-cards { grid-template-columns: 1fr; }
+  .city-card { border-right: none; border-bottom: 1px solid var(--paper-dark); }
+  .logistics-grid { grid-template-columns: 1fr; }
+  .logistics-panel { border-right: none; border-bottom: 1px solid var(--paper-dark); }
+  .overview-hero { grid-template-columns: 1fr; }
+  .oh-stats { flex-direction: row; text-align: left; }
+  .day-entry { grid-template-columns: 70px 30px 1fr; gap: 0 12px; }
+  .train-card { grid-template-columns: 1fr; }
+  .tc-num { display: none; }
+  .event-card { grid-template-columns: 60px 1fr; gap: 16px; }
+}
+
+/* ── PRINT ── */
+@media print {
+  .sticky-nav { display: none; }
+  .section { display: block !important; }
+  .cover { min-height: auto; page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- UPDATE BANNER -->
+<div id="update-banner" style="background:#c0392b;color:#fff;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.04em;">
+  <span>✦ Updated — <strong>Weather &amp; Tips tab</strong> added. Click it in the nav below for temps, UV index, day-by-day flags, and packing guide.</span>
+  <button onclick="document.getElementById('update-banner').style.display='none'" style="background:rgba(255,255,255,.2);border:none;color:#fff;padding:4px 12px;cursor:pointer;font-size:12px;border-radius:3px;margin-left:20px;">Dismiss</button>
+</div>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-bg-kanji"><span>日本</span></div>
+
+  <div class="cover-content">
+    <div class="cover-mon"><span>旅</span></div>
+
+    <div class="cover-jp-title">
+      日本の<br>家族旅行
+    </div>
+    <div class="cover-en-title">Japan Family Journey · 2026</div>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Dates</span>
+        <span class="cover-meta-value">July 4 – 15, 2026</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Travelers</span>
+        <span class="cover-meta-value">Pankaj · Bijal · Chaaya · Radhika · Yana</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Cities</span>
+        <span class="cover-meta-value">Tokyo · Kyoto · Osaka</span>
+      </div>
+      <div class="cover-meta-row">
+        <span class="cover-meta-label">Journey</span>
+        <span class="cover-meta-value">12 days · 11 nights · 3 day trips</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-cities">
+      <div class="cover-footer-city">
+        <span class="cover-footer-city-jp">東京</span>
+        <span class="cover-footer-city-en">Tokyo</span>
+      </div>
+      <div class="cover-footer-city">
+        <span class="cover-footer-city-jp">京都</span>
+        <span class="cover-footer-city-en">Kyoto</span>
+      </div>
+      <div class="cover-footer-city">
+        <span class="cover-footer-city-jp">大阪</span>
+        <span class="cover-footer-city-en">Osaka</span>
+      </div>
+    </div>
+    <div class="cover-footer-scroll">Scroll to explore ↓</div>
+  </div>
+</div>
+
+<!-- ══ STICKY NAV ══ -->
+<nav class="sticky-nav">
+  <div class="nav-brand"><span>旅</span></div>
+  <div class="nav-items">
+    <div class="nav-item active" onclick="showSection('overview', this)">Overview</div>
+    <div class="nav-item" onclick="showSection('timeline', this)">Day by Day</div>
+    <div class="nav-item" onclick="showSection('trains', this)">Bullet Trains</div>
+    <div class="nav-item" onclick="showSection('events', this)">Booked Events</div>
+    <div class="nav-item" onclick="showSection('weather', this)">Weather &amp; Tips</div>
+  </div>
+</nav>
+
+<!-- ══ OVERVIEW ══ -->
+<section id="overview" class="section active">
+
+  <div class="overview-hero">
+    <div>
+      <div class="oh-label">Japan · Family Journey 2026</div>
+      <div class="oh-title">日本の旅</div>
+      <div class="oh-subtitle">July 4 – 15 · EWR → NRT → KIX → EWR</div>
+      <div class="oh-travelers">
+        <span class="oh-traveler">Pankaj</span>
+        <span class="oh-traveler">Bijal</span>
+        <span class="oh-traveler">Chaaya</span>
+        <span class="oh-traveler">Radhika</span>
+        <span class="oh-traveler">Yana</span>
+      </div>
+    </div>
+    <div class="oh-stats">
+      <div>
+        <div class="oh-stat-num">12</div>
+        <div class="oh-stat-label">Days</div>
+      </div>
+      <div>
+        <div class="oh-stat-num">3</div>
+        <div class="oh-stat-label">Cities</div>
+      </div>
+      <div>
+        <div class="oh-stat-num">8</div>
+        <div class="oh-stat-label">Events Booked</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="red-band">
+    <span class="rb-item">Depart EWR: Jul 4, 11:40 AM</span>
+    <span class="rb-item">Arrive Tokyo NRT: Jul 5, 2:30 PM</span>
+    <span class="rb-item">Bijal's Birthday: July 8 🎂</span>
+    <span class="rb-item">Mt. Fuji group tour: 32 members</span>
+    <span class="rb-item">Return KIX: Jul 15, 4:55 PM</span>
+  </div>
+
+  <div class="city-cards">
+    <div class="city-card" data-jp="東">
+      <div class="cc-label">City 01 · 5 nights</div>
+      <div class="cc-jp">東京</div>
+      <div class="cc-en">Tokyo</div>
+      <div class="cc-dates">July 5 – 10</div>
+      <div class="cc-hotel">Shibuya Stream Hotel</div>
+      <div class="cc-highlights">
+        <div class="cc-highlight special">teamLab Planets (Jul 6)</div>
+        <div class="cc-highlight special">Go-Kart Street Racing (Jul 7 night)</div>
+        <div class="cc-highlight special">Mt. Fuji Day Trip + Birthday Cruise (Jul 8)</div>
+        <div class="cc-highlight special">Sumo Show + Ninja Experience (Jul 9)</div>
+        <div class="cc-highlight">Meiji Shrine at dawn</div>
+        <div class="cc-highlight">Senso-ji + Sumida River Cruise</div>
+        <div class="cc-highlight">Shibuya Scramble, Harajuku, Ginza</div>
+        <div class="cc-highlight">Yanaka old-town neighborhood</div>
+      </div>
+    </div>
+
+    <div class="city-card" data-jp="京">
+      <div class="cc-label">City 02 · 3 nights</div>
+      <div class="cc-jp">京都</div>
+      <div class="cc-en">Kyoto</div>
+      <div class="cc-dates">July 10 – 13</div>
+      <div class="cc-hotel">Nohga Hotel Kiyomizu</div>
+      <div class="cc-highlights">
+        <div class="cc-highlight special">Kimono + Tea Ceremony (Jul 10, 4 PM)</div>
+        <div class="cc-highlight special">Hiroshima + Miyajima day trip (Jul 12)</div>
+        <div class="cc-highlight">Arashiyama Bamboo Grove (early AM)</div>
+        <div class="cc-highlight">Kinkaku-ji Golden Pavilion</div>
+        <div class="cc-highlight">Fushimi Inari Thousand Torii Gates</div>
+        <div class="cc-highlight">Nijo Castle nightingale floors</div>
+        <div class="cc-highlight">Gion geisha quarter walk</div>
+        <div class="cc-highlight">Kiyomizudera Temple</div>
+      </div>
+    </div>
+
+    <div class="city-card" data-jp="大">
+      <div class="cc-label">City 03 · 2 nights</div>
+      <div class="cc-jp">大阪</div>
+      <div class="cc-en">Osaka</div>
+      <div class="cc-dates">July 13 – 15</div>
+      <div class="cc-hotel">Citadines Namba Osaka</div>
+      <div class="cc-highlights">
+        <div class="cc-highlight special">Nara day trip (Jul 13)</div>
+        <div class="cc-highlight">Nara deer park + Great Buddha</div>
+        <div class="cc-highlight">Kasuga Taisha lantern shrine</div>
+        <div class="cc-highlight">Dotonbori (Glico Man sign)</div>
+        <div class="cc-highlight">Shinsaibashi shopping arcade</div>
+        <div class="cc-highlight">Kuromon Market</div>
+        <div class="cc-highlight">Osaka Castle</div>
+        <div class="cc-highlight">Departure KIX: Jul 15</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logistics-grid">
+    <div class="logistics-panel">
+      <div class="lp-header">Flights</div>
+      <div class="flight-row">
+        <div>
+          <div class="flight-route">EWR → NRT</div>
+          <div class="flight-detail">July 4 · Depart 11:40 AM<br>Arrive July 5 · 2:30 PM<br>Duration: 13h 50m · Pankaj & Yana</div>
+        </div>
+        <span class="flight-badge">Outbound</span>
+      </div>
+      <div class="flight-row">
+        <div>
+          <div class="flight-route">KIX → SFO → EWR</div>
+          <div class="flight-detail">July 15 · Depart 4:55 PM<br>Arrive EWR 10:26 PM<br>Via San Francisco</div>
+        </div>
+        <span class="flight-badge">Return</span>
+      </div>
+    </div>
+
+    <div class="logistics-panel">
+      <div class="lp-header">Luggage Forwarding (Takkyubin)</div>
+      <div class="flight-row">
+        <div>
+          <div class="flight-route">Tokyo → Kyoto</div>
+          <div class="flight-detail">2 bags forwarded<br>Drop off Jul 9 evening at hotel<br>Arrives Kyoto hotel Jul 11</div>
+        </div>
+        <span class="flight-badge">Leg 1</span>
+      </div>
+      <div class="flight-row">
+        <div>
+          <div class="flight-route">Kyoto → Osaka</div>
+          <div class="flight-detail">3 bags forwarded<br>Drop off Jul 12 evening at hotel<br>Arrives Osaka hotel Jul 14</div>
+        </div>
+        <span class="flight-badge">Leg 2</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══ TIMELINE ══ -->
+<section id="timeline" class="section">
+  <div class="timeline-section">
+    <div class="ts-intro">
+      <div class="ts-intro-label">Full Itinerary</div>
+      <div class="ts-intro-title">一日一日 — Day by Day</div>
+    </div>
+
+    <!-- Day 0 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">4</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Saturday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-travel">Departure</span>
+        <div class="de-title">EWR → Tokyo Narita</div>
+        <div class="de-desc">Depart Newark 11:40 AM. 13h 50m flight to Tokyo Narita. Pankaj and Yana on this flight. Arrive next day at 2:30 PM (Jul 5).</div>
+      </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">5</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Sunday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-tokyo">Tokyo</span>
+        <div class="de-title">Arrive · Shibuya First Night</div>
+        <div class="de-desc">Land NRT 2:30 PM. Narita Express (~90 min) to Shibuya. Check in to Shibuya Stream Hotel. Evening: walk Shibuya Scramble Crossing, Hachiko statue, Center Gai. Welcome dinner.</div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">6</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Monday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-tokyo">Tokyo</span>
+        <div class="de-title">Meiji Shrine · teamLab Planets · Ginza</div>
+        <div class="de-desc">7:30 AM Meiji Jingu (before the crowds). Harajuku Takeshita Street. Afternoon: Ginza, Akihabara electric town.</div>
+        <span class="de-highlight">teamLab Planets — 1:30 PM · 5 tickets · pre-booked</span>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">7</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Tuesday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-tokyo">Tokyo</span>
+        <div class="de-title">Old Tokyo · Go-Kart Street Racing at Night</div>
+        <div class="de-desc">Imperial Palace Nijubashi Bridge, Hamarikyu Gardens, Sumida River Cruise, Senso-ji Temple (Nakamise Shopping St), Yanaka old-town neighborhood walk.</div>
+        <span class="de-highlight">Monkey Kart Shibuya — 9 PM · ~2 hours · pre-booked</span>
+      </div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">8</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Wednesday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-daytrip">Mt. Fuji + Birthday</span>
+        <div class="de-title">Mt. Fuji Day Trip · Birthday Dinner Cruise 🎂</div>
+        <div class="de-desc">Depart 7 AM for full-day Fuji tour (all 32 group members). Kawaguchiko Lake, Oishi Park lavender fields, Chureito Pagoda (398 steps — photo from top!), Ropeway. Evening: Yakatabune dinner cruise departing Hinode Pier — Tokyo Bay + Sumida River, Japan cultural show, Sukiyaki dinner.</div>
+        <span class="de-highlight birthday">Bijal's Birthday — Yakatabune Cruise · 7:15 PM · $437 total · pre-booked</span>
+      </div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">9</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Thursday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-tokyo">Tokyo</span>
+        <div class="de-title">Sumo Show · Shinjuku · Ninja Experience</div>
+        <div class="de-desc">Shinjuku Government Observatory, Omoide Yokocho (Memory Lane). Indian dinner. Evening luggage forwarding: drop 2 bags at hotel for Kyoto delivery.</div>
+        <span class="de-highlight">Shinjuku Sumo Club — 10 AM · reserved seats · pre-booked</span>
+        <span class="de-highlight">Ninja Show Kabukicho — 3 PM · 5 adults · pre-booked</span>
+      </div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">10</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Friday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-kyoto">Kyoto</span>
+        <div class="de-title">Shinkansen to Kyoto · Higashiyama · Tea Ceremony</div>
+        <div class="de-desc">7:30 AM Nozomi/Hikari bullet train from Shinagawa (sit on RIGHT side for Mt. Fuji view). Arrive Kyoto ~10 AM. Walk Higashiyama: Kiyomizudera → Sannenzaka → Ninenzaka → Yasaka Pagoda → Gion geisha district.</div>
+        <span class="de-highlight">Kimono + Tea Ceremony — 4 PM · Gion · 4 adults · mai-ko.com</span>
+      </div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">11</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Saturday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-kyoto">Kyoto</span>
+        <div class="de-title">Bamboo Forest · Golden Pavilion · Fushimi Inari</div>
+        <div class="de-desc">7:45 AM Arashiyama Bamboo Grove (go early before crowds). Kinkaku-ji Golden Pavilion reflected in Kyoko-chi pond. Nijo Castle (nightingale floors, no photos inside). Nishiki Market — Kyoto's Kitchen. 2:45 PM Fushimi Inari Thousand Torii Gates (allow 90 min, don't attempt full summit).</div>
+      </div>
+    </div>
+
+    <!-- Day 8 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">12</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Sunday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-daytrip">Hiroshima + Miyajima</span>
+        <div class="de-title">Hiroshima Peace Memorial · Miyajima Floating Torii</div>
+        <div class="de-desc">8:26 AM Nozomi 3 from Kyoto (⚠ NOT on JR Pass — purchase via Smart EX). Arrive Hiroshima ~10 AM. Take tram to pier. 10:40 AM ferry to Miyajima Island — Floating Torii Gate, Itsukushima Shrine, Mount Misen. Afternoon: Peace Memorial Museum, A-Bomb Dome. Return 6:18 PM Nozomi 54 (Ekiben dinner on train). Back Kyoto ~8 PM.</div>
+        <span class="de-highlight">Miyajima Ferry — 10:40 AM · pre-booked · ARRIVE PIER BY 10:30</span>
+      </div>
+    </div>
+
+    <!-- Day 9 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">13</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Monday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-daytrip">Nara → Osaka</span>
+        <div class="de-title">Nara Deer Park · Great Buddha · Check into Osaka</div>
+        <div class="de-desc">10:55 AM Kintetsu Aoniyoshi train Kyoto → Nara. Deer park (buy shika senbei crackers for deer), Todaiji Great Buddha (one of world's largest), Kasuga Taisha stone-lantern shrine, Nakatanidou mochi pounding. Then Nara → Osaka Rapid train. Check in Citadines Namba Osaka. Evening: Dotonbori (Glico Man sign, crab neon), Shinsaibashi.</div>
+      </div>
+    </div>
+
+    <!-- Day 10 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">14</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Tuesday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot filled"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-osaka">Osaka</span>
+        <div class="de-title">Free Day in Osaka</div>
+        <div class="de-desc">Explore at leisure: Kuromon Ichiba Market (food stalls), Osaka Castle, Sumiyoshi Taisha (oldest shrine in Osaka), Shinsekai district retro arcade. Final shopping and meals. Prepare luggage for early morning departure.</div>
+      </div>
+    </div>
+
+    <!-- Day 11 -->
+    <div class="day-entry">
+      <div class="de-date">
+        <span class="de-date-num">15</span>
+        <span class="de-date-month">July</span>
+        <span class="de-date-dow">Wednesday</span>
+      </div>
+      <div class="de-spine"><div class="de-dot"></div><div class="de-line"></div></div>
+      <div class="de-body">
+        <span class="de-city-tag tag-travel">Departure</span>
+        <div class="de-title">Kansai International → Home</div>
+        <div class="de-desc">Depart KIX 4:55 PM. Via San Francisco. Arrive EWR 10:26 PM same day. Last breakfast in Dotonbori area. Kansai Airport Express (Haruka) takes ~75 min from Namba.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRAINS ══ -->
+<section id="trains" class="section">
+  <div class="trains-section">
+    <div class="section-header">
+      <div class="sh-label">新幹線</div>
+      <div class="sh-title">Bullet Train Schedule</div>
+    </div>
+
+    <div class="train-card">
+      <div class="tc-num">01</div>
+      <div>
+        <div class="tc-route">
+          Tokyo (Shinagawa) <span class="tc-arrow">→</span> Kyoto
+        </div>
+        <div class="tc-detail">
+          Nozomi / Hikari line · Reserve seats in car 15 (window) for Mt. Fuji view
+          <span class="tc-tip">💡 Sit on the RIGHT side of the train heading from Tokyo — you'll see Mt. Fuji clearly on a clear day.</span>
+        </div>
+      </div>
+      <div class="tc-meta">
+        <div class="tc-date">July 10</div>
+        <div class="tc-time">7:30 AM</div>
+        <div class="tc-duration">~2h 15m</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="tc-num">02</div>
+      <div>
+        <div class="tc-route">
+          Kyoto <span class="tc-arrow">→</span> Hiroshima
+        </div>
+        <div class="tc-detail">
+          Nozomi 3 · Reserved seats
+          <span class="tc-warning">⚠ Nozomi trains are NOT covered by the JR Pass. Purchase tickets separately via Smart EX app or at a ticket machine before July 12.</span>
+        </div>
+      </div>
+      <div class="tc-meta">
+        <div class="tc-date">July 12</div>
+        <div class="tc-time">8:26 AM</div>
+        <div class="tc-duration">~96 min</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="tc-num">03</div>
+      <div>
+        <div class="tc-route">
+          Hiroshima <span class="tc-arrow">→</span> Kyoto
+        </div>
+        <div class="tc-detail">
+          Nozomi 54 · Reserved seats
+          <span class="tc-tip">💡 Buy an Ekiben (train bento box) at Hiroshima Station before boarding — dinner on the train.</span>
+        </div>
+      </div>
+      <div class="tc-meta">
+        <div class="tc-date">July 12</div>
+        <div class="tc-time">6:18 PM</div>
+        <div class="tc-duration">~100 min</div>
+      </div>
+    </div>
+
+    <div class="train-card">
+      <div class="tc-num">04</div>
+      <div>
+        <div class="tc-route">
+          Kyoto <span class="tc-arrow">→</span> Nara <span class="tc-arrow">→</span> Osaka
+        </div>
+        <div class="tc-detail">
+          Kintetsu Aoniyoshi Limited Express (Kyoto→Nara) · Nara Rapid Express (Nara→Osaka Namba)
+          <span class="tc-tip">💡 The Aoniyoshi is a scenic tourist train with beautiful interior design — worth the premium.</span>
+        </div>
+      </div>
+      <div class="tc-meta">
+        <div class="tc-date">July 13</div>
+        <div class="tc-time">10:55 AM</div>
+        <div class="tc-duration">Kyoto→Nara ~45m</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ BOOKED EVENTS ══ -->
+<section id="events" class="section">
+  <div class="events-section">
+    <div class="section-header">
+      <div class="sh-label">予約済み</div>
+      <div class="sh-title">All Pre-Booked Events</div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block vermilion">
+        <span class="ec-date-num">6</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">teamLab Planets — Toyosu</div>
+        <div class="ec-time">1:30 PM</div>
+        <div class="ec-detail">Immersive digital art museum. Walk through rooms of infinite light and water. 5 tickets pre-purchased. Allow 90 minutes. Wear clothes you can get wet at the knees (water reflection room).</div>
+        <div class="ec-tags"><span class="ec-tag">5 tickets</span><span class="ec-tag">Toyosu, Tokyo</span><span class="ec-tag">~90 min</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block">
+        <span class="ec-date-num">7</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Monkey Kart Shibuya — Street Go-Karting</div>
+        <div class="ec-time">9:00 PM</div>
+        <div class="ec-detail">Street-legal go-karts through Shibuya and Roppongi. Wear helmets provided. International Driver's License required — confirm all travelers have this before the trip. ~2 hours total.</div>
+        <div class="ec-tags"><span class="ec-tag">Shibuya, Tokyo</span><span class="ec-tag">~2 hours</span><span class="ec-tag">Driver's license needed</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block vermilion">
+        <span class="ec-date-num">8</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Mt. Fuji Group Tour — 32 Members</div>
+        <div class="ec-time">7:00 AM</div>
+        <div class="ec-detail">Full-day tour with the larger group. Kawaguchiko Lake, Oishi Park lavender, Chureito Pagoda (climb to the top for the iconic photo — 398 steps), Ropeway. Pre-booked for the full group.</div>
+        <div class="ec-tags"><span class="ec-tag">32 members</span><span class="ec-tag">All day</span><span class="ec-tag">Pre-booked</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block vermilion">
+        <span class="ec-date-num">8</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">🎂 Bijal's Birthday — Yakatabune Dinner Cruise</div>
+        <div class="ec-time">7:15 PM · Hinode Pier</div>
+        <div class="ec-detail">Traditional wooden boat cruise along Tokyo Bay and Sumida River. Japan cultural show included. Dinner: Sukiyaki (Japanese hot pot). Arrive at Hinode Pier by 7:00 PM. $437 total for the group.</div>
+        <div class="ec-tags"><span class="ec-tag">$437 total</span><span class="ec-tag">Hinode Pier</span><span class="ec-tag">Dinner included</span><span class="ec-tag">Cultural show</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block">
+        <span class="ec-date-num">9</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Shinjuku Sumo Club — Wrestling Show</div>
+        <div class="ec-time">10:00 AM</div>
+        <div class="ec-detail">Reserved seats for a sumo wrestling performance. Sumo Club Shinjuku — traditional demonstration with English commentary. Tickets for the family pre-booked.</div>
+        <div class="ec-tags"><span class="ec-tag">Reserved seats</span><span class="ec-tag">Shinjuku</span><span class="ec-tag">Pre-booked</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block">
+        <span class="ec-date-num">9</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Ninja Experience — Shinjuku Kabukicho</div>
+        <div class="ec-time">3:00 PM</div>
+        <div class="ec-detail">Interactive ninja performance and experience. 5 adults. Shuriken throwing, ninja history, costumed performers. Pre-booked.</div>
+        <div class="ec-tags"><span class="ec-tag">5 adults</span><span class="ec-tag">Kabukicho, Shinjuku</span><span class="ec-tag">Pre-booked</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block vermilion">
+        <span class="ec-date-num">10</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Kimono Rental + Tea Ceremony — Gion, Kyoto</div>
+        <div class="ec-time">4:00 PM</div>
+        <div class="ec-detail">Traditional kimono fitting and dressing followed by matcha tea ceremony. 4 adults. Booked via mai-ko.com. Located in Gion — perfect for photos in the historic district after. Allow 2–3 hours total.</div>
+        <div class="ec-tags"><span class="ec-tag">4 adults</span><span class="ec-tag">Gion, Kyoto</span><span class="ec-tag">mai-ko.com</span><span class="ec-tag">2–3 hours</span></div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="ec-date-block">
+        <span class="ec-date-num">12</span>
+        <span class="ec-date-month">July</span>
+      </div>
+      <div>
+        <div class="ec-name">Miyajima Island — Floating Torii Ferry</div>
+        <div class="ec-time">10:40 AM · Hiroshima Pier</div>
+        <div class="ec-detail">Pre-booked return ferry to Miyajima Island. Floating Otorii Gate of Itsukushima Shrine, Mount Misen hike option, deer on the island. CRITICAL: Must arrive at Hiroshima pier by 10:30 AM (only 10 minutes before departure).</div>
+        <div class="ec-tags"><span class="ec-tag">Pre-booked return</span><span class="ec-tag">⚠ Arrive 10:30 AM</span><span class="ec-tag">Hiroshima Pier</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ WEATHER & TIPS ══ -->
+<section id="weather" class="section">
+  <div style="background:var(--ink-mid);padding:clamp(40px,6vw,70px) clamp(32px,6vw,80px);">
+    <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--vermilion);margin-bottom:10px;">天気予報</div>
+    <div style="font-family:'Noto Serif JP',serif;font-size:clamp(24px,4vw,40px);font-weight:300;color:#fff;letter-spacing:.1em;margin-bottom:8px;">Weather in July</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.4);letter-spacing:.05em;">Japan's rainy season (梅雨) typically ends late June — expect hot, humid, sunny days with occasional afternoon thunderstorms.</div>
+  </div>
+
+  <!-- City weather cards -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--paper-dark);">
+
+    <div style="padding:36px;border-right:1px solid var(--paper-dark);position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-10px;right:-10px;font-family:'Noto Serif JP',serif;font-size:90px;color:rgba(0,0,0,.04);pointer-events:none;">東</div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--vermilion);margin-bottom:6px;">Tokyo · Jul 5–10</div>
+      <div style="font-family:'Noto Serif JP',serif;font-size:24px;margin-bottom:16px;">東京</div>
+      <div style="display:flex;gap:20px;margin-bottom:20px;">
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--vermilion);line-height:1;">88°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">HIGH (°F)</div>
+        </div>
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--ink-light);line-height:1;">75°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">LOW (°F)</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Humidity</span><span style="font-weight:700;">75–80%</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Rain days</span><span style="font-weight:700;">~5 of 6 days</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">UV Index</span><span style="font-weight:700;color:var(--vermilion);">Very High (9–11)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Sunrise</span><span style="font-weight:700;">4:31 AM</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;">
+          <span style="color:var(--ink-light);">Sunset</span><span style="font-weight:700;">7:01 PM</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:12px;background:var(--gold-light);font-size:12px;color:var(--ink-mid);line-height:1.5;">
+        <strong>⚠ Mt. Fuji (Jul 8):</strong> Much cooler at 5th station — pack one warm layer. High ~60°F / 15°C. Cloud cover common in afternoon; morning views are clearest.
+      </div>
+    </div>
+
+    <div style="padding:36px;border-right:1px solid var(--paper-dark);position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-10px;right:-10px;font-family:'Noto Serif JP',serif;font-size:90px;color:rgba(0,0,0,.04);pointer-events:none;">京</div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--vermilion);margin-bottom:6px;">Kyoto · Jul 10–13</div>
+      <div style="font-family:'Noto Serif JP',serif;font-size:24px;margin-bottom:16px;">京都</div>
+      <div style="display:flex;gap:20px;margin-bottom:20px;">
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--vermilion);line-height:1;">93°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">HIGH (°F)</div>
+        </div>
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--ink-light);line-height:1;">77°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">LOW (°F)</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Humidity</span><span style="font-weight:700;">80–85%</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Rain days</span><span style="font-weight:700;">~3 of 4 days</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">UV Index</span><span style="font-weight:700;color:var(--vermilion);">Very High (9–11)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Sunrise</span><span style="font-weight:700;">4:50 AM</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;">
+          <span style="color:var(--ink-light);">Sunset</span><span style="font-weight:700;">7:09 PM</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:12px;background:var(--vermilion-light);font-size:12px;color:var(--ink-mid);line-height:1.5;">
+        <strong>🌡 Hottest city on the trip.</strong> Kyoto sits in a basin and traps heat. Plan outdoor sites (Fushimi Inari, Arashiyama) for early morning before 9 AM. Carry water constantly.
+      </div>
+    </div>
+
+    <div style="padding:36px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-10px;right:-10px;font-family:'Noto Serif JP',serif;font-size:90px;color:rgba(0,0,0,.04);pointer-events:none;">大</div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--vermilion);margin-bottom:6px;">Osaka · Jul 13–15</div>
+      <div style="font-family:'Noto Serif JP',serif;font-size:24px;margin-bottom:16px;">大阪</div>
+      <div style="display:flex;gap:20px;margin-bottom:20px;">
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--vermilion);line-height:1;">91°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">HIGH (°F)</div>
+        </div>
+        <div>
+          <div style="font-size:32px;font-weight:700;color:var(--ink-light);line-height:1;">77°</div>
+          <div style="font-size:10px;color:#999;letter-spacing:.1em;">LOW (°F)</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Humidity</span><span style="font-weight:700;">78–83%</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Rain days</span><span style="font-weight:700;">~2 of 3 days</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">UV Index</span><span style="font-weight:700;color:var(--vermilion);">Very High (9–11)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--paper-dark);">
+          <span style="color:var(--ink-light);">Sunrise</span><span style="font-weight:700;">4:54 AM</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;">
+          <span style="color:var(--ink-light);">Sunset</span><span style="font-weight:700;">7:11 PM</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:12px;background:var(--paper-warm);font-size:12px;color:var(--ink-mid);line-height:1.5;">
+        <strong>🦌 Nara (Jul 13):</strong> Outdoor all day in the heat — start early, bring water and shade hats. Deer are friendly but persistent. Keep food hidden.
+      </div>
+    </div>
+  </div>
+
+  <!-- What to pack -->
+  <div style="padding:48px clamp(32px,6vw,80px);border-top:1px solid var(--paper-dark);">
+    <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--vermilion);margin-bottom:8px;">持ち物リスト</div>
+    <div style="font-family:'Noto Serif JP',serif;font-size:26px;font-weight:300;letter-spacing:.1em;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid var(--ink);">Packing for July Heat</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;">
+
+      <div>
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--vermilion);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--paper-dark);">Must-Have</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Compact folding umbrella</strong> — not optional. Sudden downpours are common. Japan sells great ones for ¥1,000 at 7-Eleven.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Portable hand fan</strong> — ubiquitous in Japan; pick one up Day 1. Temples and shrines have zero A/C.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Sunscreen SPF 50+</strong> — UV is extreme all month. Reapply every 2 hours when outdoors.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Electrolyte packets</strong> — heat exhaustion is a real risk with Tokyo humidity. Mix into water bottles daily.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Cooling towels</strong> — instant-cool towels from CVS or Amazon. Lifesaver at outdoor sites.</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--vermilion);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--paper-dark);">Clothing</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Light, breathable fabrics</strong> — cotton, linen, or moisture-wicking. Dark colors show sweat less.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>One warm layer per person</strong> — for the Mt. Fuji 5th station (60°F/15°C). A light zip-up is enough.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Slip-on shoes</strong> — temples and traditional sites require removing shoes constantly. Avoid lace-ups.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>Wide-brim hat or cap</strong> — especially for Mt. Fuji, Nara deer park, and Fushimi Inari.</span></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="color:var(--vermilion);flex-shrink:0;">◆</span><span><strong>For teamLab Planets</strong> — shorts or pants you can roll above the knee (water room). Light and dry-quick.</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--vermilion);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--paper-dark);">Day-by-Day Weather Flags</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 5 — Arrive Tokyo</span><span>Hot, muggy ☁/⛅</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 6 — teamLab</span><span>Hot, possible PM rain 🌦</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 7 — Go-Karts</span><span>Hot, humid ☀/⛅</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 8 — Mt. Fuji 🎂</span><span style="color:var(--vermilion);font-weight:700;">Cool at summit, bring layer</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 9 — Sumo/Ninja</span><span>Hot, indoor focus ✓</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 10 — Bullet train + Kyoto</span><span>Hotter than Tokyo ☀</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 11 — Bamboo/Pavilion</span><span style="color:var(--vermilion);font-weight:700;">Go out before 9 AM!</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 12 — Hiroshima</span><span>Hot, bring umbrella 🌦</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 13 — Nara outdoor</span><span style="color:var(--vermilion);font-weight:700;">Hottest day, water + hat</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--paper-dark);font-size:12px;">
+            <span style="color:var(--ink-light);">Jul 14 — Osaka free day</span><span>Hot, A/C shopping relief ☀</span>
+          </div>
+          <div style="display:flex;justify-content:space-bet
