@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    function showSection(id,btn){document.querySelectorAll('.section').forEach(function(s){s.style.display='none';});var el=document.getElementById(id);if(el)el.style.display='block';document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});if(btn)btn.classList.add('active');var nav=document.querySelector('.nav');if(nav)window.scrollTo({top:nav.offsetTop-10,behavior:'smooth'});}
+  </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>日本の旅 — Japan Family Journey 2026</title>
